@@ -53,20 +53,19 @@ function decode(expr) {
             letter = ' ';
         } 
     
-        let innerArr = [];    //поделили по 10 знакам letter = '0010101010'
+        let innerArr = [];
         for (let j = 0; j < letter.length; j += 2) {
             innerArr.push(letter.slice(j, j + 2))
         }
         lettersArr.push(innerArr);
     }
     
-    let arrNoNull = [];                                                                //убираем 00 
+    let arrNoNull = [];
     for (let i = 0; i < lettersArr.length; i++) {
         let innerArrNoNull = lettersArr[i].filter(symb => symb !== '00');
         arrNoNull.push(innerArrNoNull);
     }
-   
-// в точки запятые превратили
+    
     let codedArr = arrNoNull.map(innerArr => innerArr.map(item => item = codes[item]));
     let newcodedArr = codedArr.map(item => item.join(''));
     console.log(newcodedArr);
